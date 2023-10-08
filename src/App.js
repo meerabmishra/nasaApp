@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React, { useState } from 'react'
+import InputForm from './components/InputForm'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AsteroidsDetail from './components/AsteroidsDetail';
 
 function App() {
+  const [apiData,setApiData]=useState([])
+  const apiKey='L9iQjgz1gtFhhUMFH8pAprBBeNHbSVYlpDDx6yzB'
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <div>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={  <InputForm apiKey={apiKey} setApiData={setApiData} apiData={apiData}/>} />
+      <Route path='/asteroids' element={  <AsteroidsDetail/>} />
+
+    </Routes>
+    </BrowserRouter>
+    
     </div>
   );
 }
